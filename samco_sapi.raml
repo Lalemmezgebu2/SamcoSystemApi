@@ -1,0 +1,96 @@
+#%RAML 1.0
+title: samco_sapi
+baseUri: https://developers.stocknote.com/api/#stocknote-api-documentation-orders
+
+description: this SAPI will book orders. 
+version: 1.0
+uses: 
+/positions:
+  get:
+   description: This API will list of symbols
+   responses:
+    200:
+      body:
+        application/json:
+          example: !include Examples/SamcopositionExample.raml
+       
+/orders:
+  post:    
+    description: list of orders
+    queryParameters:
+      symbolName:
+        type: string
+        required: true
+        example: "INFY"
+      exchange:
+        type: string
+        required: true
+        example: "NSE"
+      transactionType:
+        type: string
+        required: true
+        example: "sell"
+      orderType:
+        type: string
+        required: true
+        example: "limit order"
+      quantity:
+        type: integer
+        required: true
+        example: -1
+      disclosedQuantity:
+        type: integer
+        required: true
+        example: -3
+      price:
+        type: string
+        required: true
+        example: "-1200.0"
+      orderValidity:
+        type: string
+        required: true
+        example: "Day"
+      afterMarketOrderFlag:
+        type: string
+        required: true
+        displayName: boolean
+      productType:
+        type: string
+        required: true
+        example: "CNC"
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include Examples/SamcoOrderResponseexample.raml
+              
+             
+     
+
+
+              
+              
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+          
+
+          
+
+            
+
+
+
+            
